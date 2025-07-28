@@ -224,19 +224,19 @@
             border-bottom: none;
         }
         
-        /* --- Reel Placeholder Styling --- */
-        .reel-container {
+        /* --- Video Placeholder Styling --- */
+        .video-container {
             position: relative;
             width: 100%;
-            max-width: 320px; /* Typische Breite für Reels auf Desktop */
+            max-width: 640px; /* Standardbreite für Web-Videos */
             margin: 0 auto;
-            padding-top: 177.78%; /* 9:16 Aspect Ratio (16 / 9 * 100 = 177.78) */
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
             background-color: #000;
             border-radius: 12px;
             overflow: hidden;
         }
 
-        .reel-container video {
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
@@ -422,7 +422,7 @@
                         <li><strong>Szene B (Familie):</strong> Versuch, sperriges Equipment zu verladen. Text: "Platz für Ihr Leben?" -> Lösung: Geräumiger SUV.</li>
                         <li><strong>Szene C (Handwerker):</strong> Vor einem Berg von Paketen. Text: "Raum für Ihre Ideen?" -> Lösung: Praktischer Transporter.</li>
                         <li><strong>Finale:</strong> Schnelle Schnitte der zufriedenen Fahrer, eine Luftaufnahme der drei Autos, die auf ein Wahl Group Autohaus zufahren, und Einblendung des Logos.</li>
-                    </ol>
+                    </ul>
                 </div>
                 <div class="card">
                     <h3>Ton, Stil & Call-to-Action</h3>
@@ -533,7 +533,7 @@
                     <h2>Unser Reel: Für jeden Weg die richtige Wahl</h2>
                 </div>
                 <div class="card" style="margin-top: 3rem; padding: 0; background-color: transparent; border: none;">
-                    <div class="reel-container">
+                    <div class="video-container">
                         <video controls>
                             <source src="richtigewahl.mov" type="video/mp4">
                             Ihr Browser unterstützt das Video-Tag nicht.
