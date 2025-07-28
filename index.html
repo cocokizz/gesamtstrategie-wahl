@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahl Group | Gesamtstrategie Digitaler Markenauftritt</title>
+    
+    <!-- Google Font Import: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variablen (zentrale Steuerung) --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-light: #1E1E1E;
+            --primary-accent: #00A8A8; /* Ein moderner Teal-Ton als Akzent */
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --border-color: #333333;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Basis- & Reset-Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* --- Globale Helferklassen --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { font-size: 3rem; color: var(--text-primary); }
+        h2 { font-size: 2.5rem; color: var(--text-primary); text-align: center; }
+        h3 { font-size: 1.8rem; color: var(--primary-accent); }
+        h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary)}
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--text-primary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .text-center p {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 70ch;
+        }
+        
+        ul, ol {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+             margin-bottom: 0.75rem;
+             padding-left: 1.5rem;
+             position: relative;
+        }
+        li::before {
+            content: '•';
+            color: var(--primary-accent);
+            font-weight: bold;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+        }
+        
+        ol li::before {
+             content: counter(list-item) ". ";
+             counter-increment: list-item;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-svg {
+            width: 150px;
+            height: auto;
+            fill: var(--text-primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .main-nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--text-primary);
+        }
+
+
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* --- General Card & Grid Styles --- */
+        .card {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* --- Table Styling --- */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+        td {
+            color: var(--text-secondary);
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* --- Reel Placeholder Styling --- */
+        .reel-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px; /* Typische Breite für Reels auf Desktop */
+            margin: 0 auto;
+            padding-top: 177.78%; /* 9:16 Aspect Ratio (16 / 9 * 100 = 177.78) */
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .reel-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        /* --- Scroll Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsivität --- */
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .main-header { padding: 1rem; }
+            .main-nav { display: none; }
+            .container { padding: 0 1.5rem; }
+            .grid-layout { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <!-- SVG Logo direkt eingebettet -->
+            <svg class="logo-svg" viewBox="0 0 457.9 204.18" xmlns="http://www.w3.org/2000/svg"><path d="M191.3,0l-95.7,140.8h-29.2l-.7-.7v-50.8c0-.2,1.2-.8-.2-.7l-35.5,52.2H.7l-.7-.7V34h30.7v52.2l35.2-52.2h30.4v52.2L154.9,0h36.4Z"/><polygon points="303.5 34 292 71.4 329.4 71.4 341.6 34 376.4 34 342.6 140.8 307.8 140.8 320.8 97.7 283.9 97.7 270.2 140.8 235.4 140.8 268 34 303.5 34"/><path d="M222.5,34l8.2,106.8h-34l-.5-17.2h-35.7l-10.5,17.2h-37.6l72.2-106.8h38.1-.2ZM196.1,100.6v-37.8l-22.1,37.8h22.1Z"/><polygon points="427.2 34 402.8 114.5 457.9 114.5 450.1 139 449.1 140.8 359.1 140.8 392.2 34 427.2 34"/><path d="M195.6,171v-2.4l4.1.5.2.7c-.4,9.7,1,19.5-1.2,29-3.2,7.6-21.2,7.6-20.4-2.9,1.3,0,3.7-.3,4.5,1s.3,2.1,2.4,2.9c6,2.4,11-2,9.9-8.2-5.4,3.9-12.3,3.4-15.7-2.7-5.2-9.3.5-24.2,12.7-19.9l3.5,2h0ZM188.3,172c-8.7.8-8.4,19.6,1.8,18.1s7.4-14.6,1.6-17.3-2.6-.8-3.3-.8h-.1Z"/><path d="M10.1,187.3l5.3-18.6,4.5.4,4.5,17.7c.7,0,.8-.7.9-1.2,1.9-5.4,3.1-11.5,4.8-17h4.3l-7.6,25.2-4.8.2-4.6-18.2-4.6,18.2h-5l-7.8-25.4,5,.5,5,18.2h.1Z"/><path d="M409,159.5v34.5h-4.3v-2.4c-4.9,5.1-12.6,3.4-15.9-2.5s-1.9-17.8,5.7-20.3,6.9-.4,9.7,2.3v-11.5h4.8v-.1ZM397.9,172c-8.2.7-7.9,17-1,18.5s8.3-5.8,7.8-11.2-2.8-7.7-6.8-7.3Z"/><path d="M328.5,192v11.5h-4.3v-35h3.8v2.9l2.2-1.8c6.6-3.9,14.5.5,15.5,7.9s-2.3,18.3-13.1,16.9l-4.2-2.3.1-.1ZM330.5,189c2.3,2.3,6.2,2.1,8.5,0s3.2-11.9.2-15.1-9.4-.9-10.7,4.2-.5,8.6,1.9,11l.1-.1Z"/><path d="M449.3,182.9h-18.2c-.7,6.7,8.1,10.7,12.2,5.3s.7-2.1,1.5-2.3l4.5.4c-.8,4-4.8,7.8-8.9,8.2-11.1,1.1-15.5-6.2-14.1-16.5s5.2-9.1,9.9-9.7c8.8-1.2,14.2,6.5,13.1,14.7v-.1ZM444.5,178.6c-.8-8.8-12.4-8.6-13.4,0h13.4Z"/><path d="M71.9,194h-4.8l-.8-2.4c-2,.7-3.7,2.4-5.9,2.8s-6.4.3-8.5-.9c-3.6-2.1-4.3-6.3-2.3-9.9,2.9-5.1,11.4-4.2,16.4-5.4,0-2.9-.3-4.8-3.2-5.6s-8.4-.2-8.8,4.2l-4.8-.5c.4-2.1,1.4-4.4,3.1-5.8,4.4-3.4,17-3.6,18,3.1s-.2,7.9,0,11.5.3,4.7.5,6.2,1,1.6.9,2.6l.2.1ZM66.2,181.5c-4.2,2.5-14.8.1-11.9,7.8,3.4,2.9,9.2,1.4,11.2-2.6l.7-5.3v.1Z"/><path d="M93.5,159.5v12c4-4.1,10.9-4.8,14.6,0s.8.8,1,1.4.7,2.5.7,2.7v18.4h-4l-.7-.8v-17.2c-1-3.9-5.3-4.6-8.5-2.7s-2.1,3.1-3,5.6v15.1h-4.3v-34.5h4.3-.1Z"/><path d="M255,168.2c6.2-.9,11.9,3.1,13.1,9.2s.3,8.3-1.2,11.3c-4.1,8.2-17.8,7.8-21.1-1s-1.5-12.7,2.6-16.5,4.3-2.7,6.6-3ZM256.4,172.1c-8.3.2-9.4,13.6-3.2,17.8s5.2,1.1,6.9-.2c6-4.4,4.6-17.8-3.8-17.6h.1Z"/><path d="M289.6,168.6v18.4c0,.2,1.3,2.2,1.7,2.6,2.8,2,6.4,1,8.3-1.6s1.4-2.9,1.4-3.4v-16h4.3v25.4h-3.8l-.2-2.9c-3.1,4-10.1,4.6-13.9,1.4s-2.2-2.9-2.2-3.6v-20.4h4.3l.1.1Z"/><path d="M218.2,168.6h3.8v2.9c2.9-3,5.9-4.9,9.5-1.6l-.9,4c-.3.4-4.2-2.8-6.6.8s-1.5,3.4-1.5,3.8v15.6h-4.3v-25.5Z"/><rect x="128" y="159.5" width="4.3" height="34.5"/><rect x="149.6" y="179.1" width="12.9" height="4.8"/><path d="M369.7,194h-5.3v-5.3l4.8.2c.9.6.3,3.9.5,5.1Z"/></svg>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#fundament">Fundament</a></li>
+                    <li><a href="#core-story">Core Story</a></li>
+                    <li><a href="#zielgruppen">Zielgruppen</a></li>
+                    <li><a href="#content-strategie">Content</a></li>
+                    <li><a href="#reel-drehbuch">Reel-Drehbuch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======= Hero Section ======= -->
+        <section id="hero">
+            <div class="container">
+                <h1 class="reveal">Gesamtstrategie</h1>
+                <p class="reveal">Digitaler Markenauftritt der Wahl Group (Stand: 28. Juli 2025)</p>
+            </div>
+        </section>
+
+        <!-- ======= Fundament Section ======= -->
+        <section id="fundament" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>1. Das strategische Fundament: Wer wir sind</h2>
+                </div>
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>1.1. Unsere Identität</h3>
+                    <p>Die Wahl Group ist ein führendes, inhabergeführtes Mehrmarken-Autohaus und ein umfassender Mobilitätsdienstleister. Mit starken Wurzeln und Hauptsitz in Siegen (Südwestfalen) agieren wir an zahlreichen Standorten in Nordrhein-Westfalen, Hessen und Rheinland-Pfalz. Als Familienunternehmen verbinden wir Tradition und Vertrauen mit einer beeindruckenden Vielfalt an Fahrzeugmarken für jeden Bedarf.</p>
+                </div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h4>1.2. Vision</h4>
+                        <p>Unsere Vision ist es, der führende und kundenfreundlichste Mobilitätspartner in unseren Regionen zu sein. Wir bieten für jeden Lebensstil, jeden Bedarf und jedes Budget die passende Fahrzeuglösung und gestalten den Wandel der Mobilität mit einer unübertroffenen Markenvielfalt aktiv mit.</p>
+                    </div>
+                    <div class="card">
+                        <h4>1.3. Mission</h4>
+                        <p>Tagtäglich ermöglichen wir unseren Kunden, aus einer riesigen Vielfalt an Marken und Technologien die für sie perfekte Wahl zu treffen. Durch ehrliche, markenübergreifende Beratung und exzellenten Service für alle von uns geführten Fabrikate schaffen wir ein einzigartiges und unkompliziertes Kundenerlebnis.</p>
+                    </div>
+                </div>
+                 <div class="card">
+                    <h3>1.4. Unique Selling Proposition (USP)</h3>
+                    <p>Die Wahl Group bietet die größte Markenvielfalt der Region unter dem Dach eines vertrauenswürdigen Familienunternehmens. Bei uns erhalten Sie nicht nur das Auto einer bestimmten Marke, sondern eine bedarfsgerechte, objektive Beratung über viele Marken hinweg – das ist wahre Auswahl und Kompetenz, die Sie so nur bei uns finden.</p>
+                </div>
+                 <div class="card">
+                    <h3>1.5. Unsere Werte</h3>
+                    <ul>
+                        <li><strong>Vertrauen:</strong> Wir stehen zu unserem Wort und handeln als verlässlicher Partner.</li>
+                        <li><strong>Qualität:</strong> Wir streben in Service, Beratung und Produktangebot nach Exzellenz.</li>
+                        <li><strong>Vielfalt:</strong> Wir bieten eine unübertroffene Auswahl als Stärke.</li>
+                        <li><strong>Innovation:</strong> Wir gestalten die Zukunft der Mobilität aktiv mit.</li>
+                        <li><strong>Leidenschaft:</strong> Die Faszination für Mobilität treibt uns jeden Tag an.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Core Story Section ======= -->
+        <section id="core-story" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>2. Die Core Story: Unsere zentrale Geschichte</h2>
+                    <p>Die zentrale emotionale Botschaft ist Sicherheit und Entlastung.</p>
+                </div>
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>2.3. Die Core Story als Erzählung</h3>
+                    <p>In einer Welt voller Optionen wird die richtige Wahl zur größten Herausforderung. Seit Generationen ist die Wahl Group der Fels in der Brandung für alle, die eine ehrliche Antwort auf ihre Mobilitätsfragen suchen. Als eines der größten Mehrmarken-Autohäuser der Region, fest verwurzelt in Südwestfalen, bieten wir keine Standardlösungen, sondern wahre Auswahl. Angetrieben von der Vision, der kundenfreundlichste Mobilitätspartner zu sein, kombinieren wir die Vielfalt von Top-Marken – von BMW über Opel bis zu den Spezialisten für E-Mobilität – mit der wichtigsten Währung überhaupt: persönlichem Vertrauen. Für unsere Kunden, insbesondere für Unternehmer mit komplexen Anforderungen, bedeutet das absolute Entlastung. Unsere zentrale Botschaft ist daher einfach: Die Wahl Group ist mehr als ein Autohaus – wir sind Ihr persönlicher Mobilitätspartner, der Ihnen mit der größten Markenvielfalt der Region und der Verlässlichkeit eines Familienunternehmens immer die beste Wahl für Ihren Weg ermöglicht.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======= Zielgruppen Section ======= -->
+        <section id="zielgruppen" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>3. Zielgruppenansprache: Die übersetzte Bedeutung</h2>
+                </div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h4>Für den "etablierten Unternehmer"</h4>
+                        <p>"Bei der Wahl Group habe ich einen einzigen, verlässlichen Partner für meinen gesamten Fuhrpark – egal ob Premium-Dienstwagen, Transporter oder E-Fahrzeuge. Das spart Zeit und gibt mir die Sicherheit, dass alles professionell gemanagt wird."</p>
+                    </div>
+                    <div class="card">
+                        <h4>Für den "aufstrebenden Gründer"</h4>
+                        <p>"Die Wahl Group versteht, dass ich flexibel sein muss. Hier bekomme ich nicht nur ein repräsentatives Auto, das zu meinem innovativen Image passt, sondern auch die markenoffene Beratung, welche Technologie – Elektro, Hybrid, Benzin – jetzt für mich am wirtschaftlichsten ist."</p>
+                    </div>
+                    <div class="card">
+                        <h4>Für die "junge Fachkraft"</h4>
+                        <p>"Hier finde ich eine riesige Auswahl, die zu meinem Budget passt – vom ersten MINI über einen jungen gebrauchten Opel bis zur Finanzierung eines neuen E-Autos. Dank der ehrlichen Beratung fühle ich mich sicher, die richtige Entscheidung zu treffen."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Content-Strategie Section ======= -->
+        <section id="content-strategie" class="reveal">
+            <div class="container">
+                 <div class="text-center">
+                    <h2>4. Content-Strategie & 5. Operative Planung</h2>
+                </div>
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>Unsere 5 Erzählstränge</h3>
+                    <ul>
+                        <li><strong>#WahlErleben (Fahrzeuge & Vielfalt):</strong> Wir zeigen die Bandbreite unseres Angebots. Fahrzeugvorstellungen, Vergleiche und Testfahrten – von Kia über Peugeot bis BMW.</li>
+                        <li><strong>#WahlZukunft (E-Mobilität & Innovation):</strong> Wir klären markenübergreifend über E-Mobilität, Ladelösungen und digitale Dienste auf.</li>
+                        <li><strong>#WahlWerkstatt (Service & markenübergreifendes Know-how):</strong> Wir geben Einblicke in unseren Service-Alltag und zeigen unsere Kompetenz in der Wartung und Reparatur.</li>
+                        <li><strong>#TeamWahl (Menschen & Karriere):</strong> Wir stellen die Menschen hinter der Vielfalt vor und positionieren uns als attraktiver Arbeitgeber.</li>
+                        <li><strong>#WahlLokal (Regionales Engagement):</strong> Wir zeigen unsere lokale Verbundenheit an unseren zahlreichen Standorten.</li>
+                    </ul>
+                </div>
+                 <div class="card">
+                    <h3>Operative Planung & Ressourcen</h3>
+                    <p><strong>Geschätzter Zeitaufwand:</strong> Für eine professionelle Umsetzung der Strategie ist ein wöchentlicher Aufwand von ca. 15-20 Stunden realistisch. Der größte Zeitfaktor ist die Content-Erstellung.</p>
+                    <p><strong>Benötigte Ressourcen (Priorität 1):</strong></p>
+                    <ul>
+                        <li><strong>Software:</strong> Ein professionelles Planungs- & Community-Management-Tool (z.B. Agorapulse) und eine Lizenz für ein Grafik-Tool (z.B. Canva for Teams).</li>
+                        <li><strong>Hardware:</strong> Ein hochwertiges externes Mikrofon, ein Stativ und ein modernes Smartphone mit sehr guter Kamera.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Reel-Drehbuch Section ======= -->
+        <section id="reel-drehbuch" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Drehbuch für ein Reel: "Für jeden Weg die richtige Wahl"</h2>
+                </div>
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>Handlung & Visuelles Konzept</h3>
+                    <p>Das Reel folgt einer dynamischen "Problem-Lösung"-Struktur. Wir zeigen drei verschiedene Menschen (Unternehmer, Familie, Gründer) in typischen Situationen mit einem Mobilitätsbedarf. Die Szenen wechseln von leicht entsättigten "Problem-Clips" zu farbenfrohen "Lösungs-Szenen" mit dem passenden Fahrzeug der Wahl Group.</p>
+                    <h4>Szenenablauf:</h4>
+                    <ol>
+                        <li><strong>Szene A (Unternehmer):</strong> Nachdenklicher Blick im Büro. Text: "Ein Partner für Ihr Business?" -> Lösung: Eleganter BMW.</li>
+                        <li><strong>Szene B (Familie):</strong> Versuch, sperriges Equipment zu verladen. Text: "Platz für Ihr Leben?" -> Lösung: Geräumiger SUV.</li>
+                        <li><strong>Szene C (Handwerker):</strong> Vor einem Berg von Paketen. Text: "Raum für Ihre Ideen?" -> Lösung: Praktischer Transporter.</li>
+                        <li><strong>Finale:</strong> Schnelle Schnitte der zufriedenen Fahrer, eine Luftaufnahme der drei Autos, die auf ein Wahl Group Autohaus zufahren, und Einblendung des Logos.</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h3>Ton, Stil & Call-to-Action</h3>
+                    <ul>
+                        <li><strong>Stimmung:</strong> Modern, dynamisch, positiv und kompetent.</li>
+                        <li><strong>Musik:</strong> Ein moderner, inspirierender und rhythmischer Instrumental-Track.</li>
+                        <li><strong>Visueller CTA am Ende:</strong> "Für jeden Weg die richtige Wahl. Finden Sie Ihre jetzt bei uns."</li>
+                        <li><strong>CTA in der Caption:</strong> "Ob Business, Familie oder Abenteuer – mit über 15 Marken finden wir immer die perfekte Lösung für Ihren Weg. Welches Auto passt aktuell am besten zu Ihnen? Verraten Sie es uns in den Kommentaren! 👇 #WahlGroup #RichtigeWahl #DeineWahl #Mobilität #Autohaus"</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Zusammenfassendes Drehbuch (Ablaufplan)</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Szene</th>
+                                    <th>Dauer</th>
+                                    <th>Visuelle Handlung & Bildeinstellung</th>
+                                    <th>Einzublendender Text</th>
+                                    <th>Audio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>4s (Die HOOK)</td>
+                                    <td>(Farbig & dynamisch) Schnelle Schnitte (ca. 1,3s pro Szene): 1. Unternehmer (Typ A) schaut gestresst auf seinen Kalender. 2. Familie (Typ C) versucht chaotisch, ein Fahrrad ins Auto zu bekommen. 3. Gründer (Typ B) steht ratlos vor einem Berg von Paketen.</td>
+                                    <td>Welcher Weg ist Ihrer?</td>
+                                    <td>Musik startet sofort (rhythmisch, modern, fesselnd)</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>6s</td>
+                                    <td>WHOOSH-Effekt. Die Kamera fährt schnell auf den Unternehmer zu. Plötzlicher Schnitt: Er fährt jetzt entspannt in einer eleganten Premium-Limousine (BMW).</td>
+                                    <td>Der repräsentative Weg.</td>
+                                    <td>Musik entfaltet sich, "Lösungs"-Sound</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>6s</td>
+                                    <td>WHOOSH-Effekt. Schnitt von der chaotischen Familie zum geräumigen SUV (Kia/Skoda). Die Hecktür öffnet sich elektrisch, das Fahrrad gleitet mühelos hinein.</td>
+                                    <td>Der flexible Weg.</td>
+                                    <td>Musik behält den Drive</td>
+                                </tr>
+                                 <tr>
+                                    <td>4</td>
+                                    <td>6s</td>
+                                    <td>WHOOSH-Effekt. Schnitt vom Gründer zu einem praktischen Transporter (Opel/Maxus). Die Seitentür wird mit einer lässigen Bewegung aufgeschoben.</td>
+                                    <td>Der praktische Weg.</td>
+                                    <td>Musik baut Spannung auf</td>
+                                </tr>
+                                 <tr>
+                                    <td>5</td>
+                                    <td>8s</td>
+                                    <td>Schnelle, rhythmische Schnitte der drei zufriedenen Fahrer am Steuer, die die "Freude am Fahren" genießen. Sie schauen selbstbewusst in die Kamera oder lächeln.</td>
+                                    <td></td>
+                                    <td>Höhepunkt der Musik</td>
+                                </tr>
+                                 <tr>
+                                    <td>6</td>
+                                    <td>8s</td>
+                                    <td>Drohnenaufnahme: Die drei unterschiedlichen Autos fahren auf einer Straße zusammen. Die Kamera zieht auf.</td>
+                                    <td>Für jeden Weg...</td>
+                                    <td>Musik wird epischer</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>10s</td>
+                                    <td>(Das Branding) Das Wahl Group Logo erscheint groß und klar über der Szene. Die Autos fahren symbolisch darauf zu.</td>
+                                    <td>...die richtige Wahl.</td>
+                                    <td>Finaler, positiver Akkord der Musik</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>5s</td>
+                                    <td>Finale Call-to-Action Einblendung auf sauberem Hintergrund.</td>
+                                    <td>Finden Sie Ihre jetzt bei uns.<br>wahl-group.de</td>
+                                    <td>Musik klingt sanft aus</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Umsetzungsplan für das Reel</h3>
+                    <h4>1. Inspiration durch erfolgreiche Reels</h4>
+                    <p>Zur Vorbereitung schlagen wir eine gezielte Suche auf Instagram vor, um ein Gefühl für den richtigen Stil zu bekommen. Hashtags wie #CarTransition, #BeforeAndAfterReel und #StorytellingReel sowie die Analyse von Wettbewerbern und den von uns geführten Marken liefern wertvollen Input.</p>
+                    <h4>2. Analyse des Referenz-Videos</h4>
+                    <p>Die Analyse des empfohlenen Videos (https://www.youtube.com/watch?v=uMiM-dWYA48) zeigt die Wichtigkeit des emotionalen Storytellings. Die Lektion für unser Reel: Der Mensch und sein Bedürfnis stehen im Mittelpunkt, das Auto ist die dienende Lösung. Unser Konzept folgt genau diesem Prinzip.</p>
+                    <h4>3. Grafisches Storyboard</h4>
+                    <p>Das textliche Drehbuch dient als Vorlage für eine grafische Umsetzung in Tools wie Canva oder Capcut, bei der Stock-Material oder Platzhalter für eigene Aufnahmen verwendet werden können.</p>
+                    <h4>4. Optimierung für die Plattform (Checkliste)</h4>
+                    <ul>
+                        <li>✅ Vertikales Format: Das Drehbuch ist für 9:16 konzipiert.</li>
+                        <li>✅ Schnelle Übergänge: "Whoosh"-Effekte sorgen für die nötige Dynamik.</li>
+                        <li>✅ Eingängige Musik: Ein instrumentaler, positiver Track ist geplant.</li>
+                        <li>✅ Klare Botschaft: Die Kreativität dient der emotionalen Vermittlung unserer Kernbotschaft.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Reel Placeholder Section ======= -->
+        <section id="reel-placeholder" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Unser Reel: Für jeden Weg die richtige Wahl</h2>
+                </div>
+                <div class="card" style="margin-top: 3rem; padding: 0; background-color: transparent; border: none;">
+                    <div class="reel-container">
+                        <video controls>
+                            <source src="richtigewahl.mov" type="video/mp4">
+                            Ihr Browser unterstützt das Video-Tag nicht.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Wahl Group | Gesamtstrategie Digitaler Markenauftritt</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- Funktion für sanfte Scroll-Animationen beim Erscheinen ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
